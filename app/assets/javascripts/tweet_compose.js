@@ -2,6 +2,13 @@ $.TweetCompose = function (el) {
   this.$el = $(el);
   this.$feed = $("#feed");
   this.$el.on("submit", this.submit.bind(this));
+  this.$el.find("a.add-mentioned-user").on("click", this.addMentionedUser.bind(this));
+};
+
+$.TweetCompose.prototype.addMentionedUser = function (e) {
+  var $scriptTag = $("#select");
+  var html = $scriptTag.html();
+  this.$el.find(".mentioned-users").append(html);
 };
 
 $.TweetCompose.prototype.submit = function (e) {
@@ -50,7 +57,8 @@ $.TweetCompose.prototype.render = function (data) {
 };
 
 $.TweetCompose.prototype.clearInput = function () {
-
+  this.$el[0].reset();
+  $(".mention-selector").remove();
 };
 
 

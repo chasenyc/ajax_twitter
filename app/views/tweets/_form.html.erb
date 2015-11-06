@@ -1,9 +1,5 @@
 <h2>New Tweet!</h2>
 <form action="/tweets" method="POST" class="tweet-compose">
-  <!-- <input
-      type="hidden"
-      name="authenticity_token"
-      value="<%= form_authenticity_token %>"> -->
 
   <label>
     Content
@@ -11,7 +7,16 @@
   </label>
   <br>
 
-  <label>
+  <div class="mentioned-users">
+    <a href="javascript:void(0)" class="add-mentioned-user">Add mention</a>
+  </div>
+  <br>
+
+  <input type="Submit" value="Post Tweet!">
+</form>
+
+<script id="select" type="text/template">
+  <label class="mention-selector">
     Mention
     <select name="tweet[mentioned_user_ids][]">
       <option></option>
@@ -20,7 +25,4 @@
       <% end %>
     </select>
   </label>
-  <br>
-
-  <input type="Submit" value="Post Tweet!">
-</form>
+</script>
